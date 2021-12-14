@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title>Econnect - Inicio</title>
+      <link rel="shortcut icon" href="img/ecoicon.png">
+      <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+      <link rel="stylesheet" type="text/css" href="css/imagehover.css">
+      <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+      <script type="text/javascript" src="js/bootstrap.js"></script>
+      <script src="https://kit.fontawesome.com/ab764c37c3.js" crossorigin="anonymous"></script>
+      <!-- SCROLL -->
+      <script src="js/smooth-scroll.polyfills.min.js"></script>
+      <!-- ACTIVATE SCROLL -->
+      <script>
+         var scroll = new SmoothScroll('a[href*="#"]');
+      </script>
+      <!-- SCROLL SETTINGS -->
+      <script>
+         var scroll = new SmoothScroll('a[href*="#"]', {
+         
+         	// Selectors
+         	ignore: '[data-scroll-ignore]', // Selector for links to ignore (must be a valid CSS selector)
+         	header: null, // Selector for fixed headers (must be a valid CSS selector)
+         	topOnEmptyHash: true, // Scroll to the top of the page for links with href="#"
+         
+         	// Speed & Duration
+         	speed: 2000, // Integer. Amount of time in milliseconds it should take to scroll 1000px
+         	speedAsDuration: false, // If true, use speed as the total duration of the scroll animation
+         	durationMax: 2000, // Integer. The maximum amount of time the scroll animation should take
+         	durationMin: 2000, // Integer. The minimum amount of time the scroll animation should take
+         	clip: true, // If true, adjust scroll distance to prevent abrupt stops near the bottom of the page
+         	offset: function (anchor, toggle) {
+         
+         		// Integer or Function returning an integer. How far to offset the scrolling anchor location in pixels
+         		// This example is a function, but you could do something as simple as `offset: 25`
+         
+         		// An example returning different values based on whether the clicked link was in the header nav or not
+         		if (toggle.classList.closest('.my-header-nav')) {
+         			return 25;
+         		} else {
+         			return 50;
+         		}
+         
+         	},
+         
+         	// Easing
+         	easing: 'easeInOutCubic', // Easing pattern to use
+         	customEasing: function (time) {
+         
+         		// Function. Custom easing pattern
+         		// If this is set to anything other than null, will override the easing option above
+         
+         		// return <your formulate with time as a multiplier>
+         
+         		// Example: easeInOut Quad
+         		return time < 0.5 ? 2 * time * time : -1 + (4 - 2 * time) * time;
+         
+         	},
+         
+         	// History
+         	updateURL: true, // Update the URL on scroll
+         	popstate: true, // Animate scrolling with the forward/backward browser buttons (requires updateURL to be true)
+         
+         	// Custom Events
+         	emitEvents: true // Emit custom events
+         
+         });
+      </script>
+   </head>
+   <style>
+      /*BOTON RED SOCIAL*/
+      .btn-dark, .btn-dark:hover, .btn-dark:active, .btn-dark:visited {
+      background-color: #000000 !important;
+      border-radius: 20px;
+      padding: 5px 5px;
+      width: 60px;
+      height: 60px;
+      vertical-align: middle;
+      }
+	  /*BARRA DE NAVEGACION FIXED*/
+      header {
+      width: 100%;
+      position: fixed;
+      z-index: 100;
+      }
+      /*TEXTOS*/
+      .textoblanco {
+      color: #FFFFFF;
+      font-size: x-large
+      }
+      .subtextoblanco {
+      color: #FFFFFF;
+      font-size: large
+      }
+      .textoverde {
+      color: #469024;
+      font-size: x-large
+      }
+      .textogris {
+      color: #706e6d;
+      font-size: large
+      }
+      .textoencima {
+      margin: 0;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      }
+      /*PANEL DE NAVEGACION*/
+      .pnav {
+      max-height: 20%;
+      background-color: #f8f9fa;
+      /*border: 1px solid red;*/
+      }
+      /*PANELES DE COLOR*/
+      .paneltransparente {
+      background-color: rgba(0, 0, 0, .0);
+      max-width: 100%;
+      /*border: 1px solid red;*/
+      }
+      .panelblanco {
+      background-color: #f8f9fa;
+      /*border: 1px solid red;*/
+      }
+      .panelpatronblanco {
+      background-color: #f8f9fa;
+      /*border: 1px solid red;*/
+      }
+      .panelverde {
+      background-color: #6dbd44;
+      background-size: 100% 100%;
+      /*border: 1px solid red;*/
+      max-width: 100%;
+      }
+      .panelverde2 {
+      background-color: #499a32;
+      /*border: 1px solid red;*/
+      max-width: 100%;
+      }
+      .panelgris {
+      background-color: #706e6d;
+      /*border: 1px solid red;*/
+      max-width: 100%;
+      }
+      .panelgris2 {
+      background-color: #5a5a5a;
+      /*border: 1px solid red;*/
+      max-width: 100%;
+      }
+      .panelnegro {
+      background-color: #000000;
+      /*border: 1px solid red;*/
+      max-width: 100%;
+      }
+      .panelazul {
+      background-color: #00779f;
+      /*border: 1px solid red;*/
+      max-width: 100%;
+      }
+      /*BOTON ACCORDEON*/
+      .accordion {
+      background-color: #51311a;
+      color: #ffffff;
+      cursor: pointer;
+      padding: 18px;
+      width: 70%;
+      border-radius: 25px;
+      text-align: left;
+      outline: none;
+      font-size: 15px;
+      transition: 0.4s;
+      }
+      .active,
+      .accordion:hover {
+      background-color: #51311a;
+      color: #ffffff;
+      }
+      .panel {
+      padding: 0 18px;
+      display: none;
+      background-color: #499a32;
+      color: #ffffff;
+      overflow: hidden;
+      border-radius: 20px;
+      width: 70%;
+      }
+      /*BOTON DESCARGA*/
+      .boton {
+      background-color: #f5804a;
+      color: #ffffff;
+      cursor: pointer;
+      padding: 18px;
+      width: 100%;
+      border-radius: 50px;
+      text-align: left;
+      outline: none;
+      font-size: 15px;
+      transition: 0.4s;
+      }
+      /*BOTON PAGINA DE PROYECTO*/
+      .botonproyecto {
+      bottom: 5%;
+      position: fixed;
+      right: 40px;
+      z-index: 40;
+      }
+      .active,
+      .boton:hover {
+      background-color: #ffffff;
+      color: #f5804a;
+      text-decoration: none
+      }
+      /*ESTIRAR IMAGEN CON EL DIV*/
+      .fix {
+      background-size: 100% 100%;
+      }
+      /*IMAGEN CIRCULAR*/
+      div.avatar {
+      /* cambia estos dos valores para definir el tamaño de tu círculo */
+      height: 300px;
+      width: 300px;
+      /* los siguientes valores son independientes del tamaño del círculo */
+      background-repeat: no-repeat;
+      background-position: 50%;
+      border-radius: 50%;
+      background-size: 100% auto;
+      }
+      img {
+      max-width: 101%;
+      max-height: 100%;
+      }
+      /*BOTON PORTAFOLIO*/
+      .btn btn-dark{
+      background-color: #000000;
+      }
+      /*TARGETA INTEGRANTE*/
+      .card-container{
+      display: flex;
+      width: 400px;
+      height: 225px;
+      background: #fff;
+      border-radius: 30px;
+      }
+      .card-header{
+      width: 250px;
+      border-right: 1px solid #fff;
+      }
+      .card-descripcion{
+      background: #fbfbfb;
+      border-radius: 30px;
+      }
+      .card-header, .card-descripcion{
+      padding: 20px;
+      text-align: left;
+      }
+      .card-header a{
+      position: relative;
+      display: block;
+      }
+      .card-header img{
+      border-radius: 50%;
+      box-shadow: 0 0 0 8px rgba(0,0,0,.06);
+      margin: 20px 0px;
+      transition: .25;
+      }
+      .card-header a:hover img{
+      box-shadow: 0 0 0 12px rgba(0, 0, 0, .1);
+      }
+      .card-header h2{
+      color: #000000;
+      }
+      .card-header h2{
+      margin-bottom: 20px;
+      }
+      .card-descripcion{
+      margin-top: 0px;
+      position: relative;
+      width: 300px;
+      }
+      .card-descripcion .social{
+      margin-top: 25px;
+      }
+      .card-descripcion .social a{
+      display: inline-block;
+      padding: 0 15px;
+      color: #000000
+      }
+      @media (max-width:0px){
+      .card-container{
+      display: block;
+      width: 450px;
+      }
+      .card-header{
+      padding: 5px 5px 5px 5px;
+      border: none;
+      }
+      .card-descripcion{
+      width: 450px
+      padding: 5px 5px 5px 5px;
+      background: transparent;
+      }
+      .card-header h4{
+      margin 0;
+      }
+      .nubes{
+      height: 200px;
+      width: 200px;
+      background-color: #6dbd44;
+      }
+   </style>
+   <body>
+      <div class="row">
+         <header>
+            <div class="row">
+               <div class="col-sm pnav">
+                  <!-- LOGO -->
+                  <center>
+                     <a class="nav-link" href="index.html">
+                     <img src="img/econnect-web-logo.png" alt="texto descriptivo" width="200px" style="vertical-align: middle;">
+                     </a>
+                  </center>
+               </div>
+               <div class="col-sm pnav ">
+                  <!-- BARRA CON BOTONES -->
+                  <nav class="navbar navbar-expand-sm navbar-light">
+                     <div class="container-fluid">
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                           <ul class="navbar-nav ml-auto">
+                           <li class="nav-item">
+                              <a class="nav-link" href="#nosotros">NOSOTROS</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" href="#servicios">SERVICIOS</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" href="#ecoequipo">ECOEQUIPO</a>
+                           </li>
+                           <li class="nav-item">
+                              <a class="nav-link" href="#contacto">CONTACTO</a>
+                           </li>
+                        </div>
+                     </div>
+                  </nav>
+               </div>
+               <div class="col-sm-1 pnav">
+               </div>
+            </div>
+         </header>
+         <div class="col-sm-1 panelazul">
+            <center>
+               <br>
+            </center>
+         </div>
+         <div class="col-sm panelazul">
+            <center>
+               <br>
+               <br>
+               <br>
+               <br>
+               <br>
+               <br>
+               <br>
+               <img src="img/econnect-white-logo.png" width="500">
+               <br>
+               <br>
+               <br>
+               <br>
+               <a class="boton" href="#" target="_blank">DESCARGA NUESTRA APP</a>
+               <br>
+               <br>
+               <br>
+               <br>
+            </center>
+         </div>
+         <div class="col-sm-8 panelazul">
+            <center>
+               <br>
+               <br>
+               <br>
+               <br>
+               <br>
+               <br>
+               <br>
+               <br>
+               <br>
+               <br>
+               <h1 class="textoblanco">BIENVENIDOS A</h1>
+               <h1 class="textoblanco">ECONNECT</h1>
+               <br>
+               <br>
+               <img src="img/flat-desing-landscape.png" alt="texto descriptivo" width="800">
+            </center>
+         </div>
+         <div class="col-sm-12 panelverde2" id="nosotros"><br><br><br></div>
+         <div class="col-sm-12 panelverde2">
+            <center>
+               <h1 class="textoblanco">NOSOTROS</h1>
+            </center>
+         </div>
+         <div class="col-sm-6 panelverde2">
+            <center>
+               <!--BOTONES REDONDEADOS-->
+               <br>
+               <br>
+               <button class="accordion">¿Qué es Econnect?<img src="img/button-down.png" alt="" width="30px" align="right"> </button>
+               <div class="col-sm panel">
+                  <br>
+                  <p>Aplicación centrada en motivar la práctica del reciclaje en las personas con el objetivo de disminuir las estadísticas de contaminación ambiental en el sector de Mosquera.</p>
+               </div>
+               <br>
+               <br>
+               <button class="accordion">Valores de la Marca<img src="img/button-down.png" alt="" width="30px" align="right"> </button>
+               <div class="col-sm panel">
+                  <br>
+                  <p>Adaptación</p>
+                  <p>Eficiencia</p>
+                  <p>Profesionalismo</p>
+                  <p>Responsabilidad</p>
+                  <p>Puntualidad</p>
+                  <p>Originalidad</p>
+               </div>
+               <br>
+               <br>
+               <button class="accordion">Misión<img src="img/button-down.png" alt="" width="30px" align="right"> </button>
+               <div class="col-sm panel">
+                  <br>
+                  <p>Econnect acompaña a la ciudadanía en el proceso de reciclaje por medio de un aplicativo móvil, donde se dará cara a la desinformación que rodea la reutilización de desechos orgánicos, ofreciendo así una solución innovadora para la ciudad.</p>
+               </div>
+               <br>
+               <br>
+               <button class="accordion">Vision <img src="img/button-down.png" alt="" width="30px" align="right"> </button>
+               <div class="col-sm panel">
+                  <br>
+                  <p>En el 2024 Econnect será líder en herramientas digitales que ayudan a simplificar los procesos de reciclaje y que debido a su fácil empleabilidad se convertirá en un estándar indispensable para familias interesadas en tomar prácticas en pro del cuidado y la conservación del medio ambiente por medio del correcto proceso en el reciclaje.</p>
+               </div>
+               <br>
+               <br>
+               <br>
+               <br>
+               <br>
+            </center>
+         </div>
+         <div class="col-sm panelverde2">
+            <center>
+               <br>
+               <img src="img/econnect-mascot.png" alt="texto descriptivo" width="200">
+            </center>
+         </div>
+         <div class="col-sm-12 panelverde2" id="servicios"><br></div>
+         <div class="col-sm-12 panelverde">
+            <img src="img/transition-1.png" alt="texto descriptivo" width="101%">
+            <center>
+               <div class="textoencima">
+                  <h1 class="textoblanco">SERVICIOS</h1>
+                  <br>
+                  <h2 class="subtextoblanco">Aquí encontrarás cada uno de nuestras secciones de la aplicación.</h2>
+                  <h2 class="subtextoblanco">¡Divierte explorándolas!</h2>
+            </center>
+            </div>
+         </div>
+      </div>
+      <!-- SERVICIOS INFO HOVER -->
+      <div class="row">
+         <div class="col-sm panelverde">
+            <center>
+               <figure class="imghvr-slide-up" style="border-radius: 50%;">
+                  <img src="img/econnect-service-1.png" alt="" width="300px">
+                  <figcaption style="background-color: #51311a;">
+                     <center>
+                        <h3>Noticias e información actualizada</h3>
+                        <p>Te mantendremos al pendiente con información que te ayude a facilitar los procesos de reciclaje en tu casa
+                        <p>
+                     </center>
+                  </figcaption>
+               </figure>
+               <br><br>
+               <h2 class="textoblanco">CENTRO DE</h2>
+               <h2 class="textoblanco">INFORMACIÓN</h2>
+            </center>
+         </div>
+         <div class="col-sm panelverde">
+            <center>
+               <figure class="imghvr-slide-up" style="border-radius: 50%;">
+                  <img src="img/econnect-service-2.png" alt="" width="300px">
+                  <figcaption style="background-color: #51311a;">
+                     <center>
+                        <h3>EcoKids</h3>
+                        <p>Podrás jugar y aprender información referente al reciclaje en nuestros minijuegos.
+                        <p>
+                     </center>
+                  </figcaption>
+               </figure>
+               <br><br>
+               <h2 class="textoblanco">CENTRO DE</h2>
+               <h2 class="textoblanco">ENTRETENIMIENTO</h2>
+               <h2 class="textoblanco">PARA NIÑOS</h2>
+            </center>
+         </div>
+         <div class="col-sm panelverde">
+            <center>
+               <figure class="imghvr-slide-up" style="border-radius: 50%;">
+                  <img src="img/econnect-service-3.png" alt="" width="300px">
+                  <figcaption style="background-color: #51311a;">
+                     <center>
+                        <h3>Bricolaje</h3>
+                        <p>Podrás aprender en cortos tutoriales, formas divertidas en las que podrás aprovechar tú material reciclable
+                        <p>
+                     </center>
+                  </figcaption>
+               </figure>
+               <br><br>
+               <h2 class="textoblanco">TUTORIALES</h2>
+               <h2 class="textoblanco">INFORMATIVOS</h2>
+            </center>
+         </div>
+         <!--INICIO FONDO BLUR-->
+         <div class="col-sm-12 panelblanco">
+            <center>
+               <img src="img/transition-2.png" alt="texto descriptivo" width="100%">
+            </center>
+         </div>
+         <div class="panelblanco" style="background-image: url('img/patron.png'); width: 100%; height: 100%;">
+            <center>
+               <br>
+               <h1 class="textoverde">NUESTRO SPOT</h1>
+               <h2 class="textogris">Mira nuestro spot publicitario para redes sociales.</h2>
+               <!-- 16:9 aspect ratio -->
+               <br>
+               <div class="ratio ratio-21x9">
+                  <iframe width="800" height="400" src="https://www.youtube.com/embed/MCRt3JNwp3U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+               </div>
+               <br>
+            </center>
+         </div>
+         <div class="col-sm-12 panelblanco">
+            <center>
+               <img src="img/transition-3.png" alt="texto descriptivo" width="100%">
+            </center>
+         </div>
+         <!--FIN FONDO BLUR-->
+         <div class="col-sm-12 panelverde2" id="ecoequipo"><br><br><br></div>
+         <div class="col-sm-12 panelverde2">
+            <center>
+               <h1 class="textoblanco">ECOEQUIPO</h1>
+               <br>
+               <h2 class="subtextoblanco">Conoce nuestro equipo y sus redes sociales.</h2>
+               <br>
+            </center>
+         </div>
+         <!--CELDA 1-->	
+         <div class="col-sm panelverde2">
+            <center>
+               <br>
+               <div class="card-container">
+                  <div class="card-header"><a href="img\hojas-de-vida\Hoja-de-vida-Claudia.pdf" target="_blank"><img src="img/team/claudia.png" width="200px"></a> </div>
+                  <div class="card-descripcion">
+                     <b>
+                        <center>CLAUDIA GÓMEZ</center>
+                     </b>
+                     <p>
+                     <center>Diseñadora gráfica.</center>
+                     </p>
+                     <div class="social">
+                        <center>
+                           <!-- <img src="img/red.jpg" width="30"> -->
+                           <a href="https://www.instagram.com/cagc_ar/?hl=es-la" target="_blank"><i class="fab fa-instagram-square fa-2x"></i></a>
+                           <a href="https://www.behance.net/claudiagomez11" target="_blank"><i class="fab fa-behance-square fa-2x"></i></a>
+                        </center>
+                     </div>
+                  </div>
+               </div>
+               <br>
+            </center>
+         </div>
+         <div class="col-sm panelverde2">
+            <center>
+               <br>
+               <div class="card-container">
+                  <div class="card-header"><a href="img\hojas-de-vida\Hoja-de-vida-Andrés.pdf" target="_blank"><img src="img/team/andres.png" width="200px"></a> </div>
+                  <div class="card-descripcion">
+                     <b>
+                        <center>ANDRÉS MARTÍNEZ</center>
+                     </b>
+                     <p>
+                     <center>Diseñador gráfico.</center>
+                     </p>
+                     <div class="social">
+                        <center>
+                           <!-- <img src="img/red.jpg" width="30"> -->
+                           <a href="https://www.behance.net/andresmartine12" target="_blank"><i class="fab fa-behance-square fa-2x"></i></a>
+                        </center>
+                     </div>
+                  </div>
+               </div>
+               <br>
+            </center>
+         </div>
+         <div class="col-sm panelverde2">
+            <center>
+               <br>
+               <div class="card-container">
+                  <div class="card-header"><a href="img\hojas-de-vida\Hoja-de-vida-Jhoan.pdf" target="_blank"><img src="img/team/jhoan.png" width="200px"></a> </div>
+                  <div class="card-descripcion">
+                     <b>
+                        <center>JHOAN TORRES</center>
+                     </b>
+                     <p>
+                     <center>Guionista, Marketing</center>
+                     </p>
+                     <div class="social">
+                        <center>
+                           <!-- <img src="img/red.jpg" width="30"> -->
+                           <a href="https://www.behance.net/jhoandtorres" target="_blank"><i class="fab fa-behance-square fa-2x"></i></a>
+                        </center>
+                     </div>
+                  </div>
+               </div>
+               <br>
+            </center>
+         </div>
+         <!--CELDA 2-->
+         <div class="col-sm panelverde2">
+            <center>
+               <br>
+               <div class="card-container">
+                  <div class="card-header"><a href="img\hojas-de-vida\Hoja-de-vida-María.pdf" target="_blank"><img src="img/team/maria.png" width="200px"></a> </div>
+                  <div class="card-descripcion">
+                     <b>
+                        <center>MARIA CHINCHILLA</center>
+                     </b>
+                     <p>
+                     <center>Productora transmedia.</center>
+                     </p>
+                     <div class="social">
+                        <center>
+                           <!-- <img src="img/red.jpg" width="30"> -->
+                           <a href="mailto:mc875580@gmail.com" target="_blank"><i class="fas fa-at fa-2x"></i></a>
+                           <a href="https://www.behance.net/mariacchinchi" target="_blank"><i class="fab fa-behance-square fa-2x"></i></a>
+                        </center>
+                     </div>
+                  </div>
+               </div>
+               <br>
+            </center>
+         </div>
+         <div class="col-sm panelverde2">
+            <center>
+               <br>
+               <div class="card-container">
+                  <div class="card-header"><a href="http://nohaynadaaqui.com/" target="_blank"><img src="img/team/karen.png" width="200px"></a> </div>
+                  <div class="card-descripcion">
+                     <b>
+                        <center>KAREN TRIANA</center>
+                     </b>
+                     <p>
+                     <center>Productora audiovisual.</center>
+                     </p>
+                     <div class="social">
+                        <center>
+                           <!-- <img src="img/red.jpg" width="30"> -->
+                           <a href="https://www.instagram.com/_kaaatch/?hl=es-la" target="_blank"><i class="fab fa-instagram-square fa-2x"></i></a>
+                           <a href="https://www.behance.net/kaaatch" target="_blank"><i class="fab fa-behance-square fa-2x"></i></a>
+                        </center>
+                     </div>
+                  </div>
+               </div>
+               <br>
+            </center>
+         </div>
+         <div class="col-sm panelverde2">
+            <center>
+               <br>
+               <div class="card-container">
+                  <div class="card-header"><a href="img\hojas-de-vida\Hoja-de-vida-Juan.pdf" target="_blank"><img src="img/team/juan.png" width="200px"></a> </div>
+                  <div class="card-descripcion">
+                     <b>
+                        <center>CAMILO BEJARANO</center>
+                     </b>
+                     <p>
+                     <center>Ilustrador</center>
+                     </p>
+                     <div class="social">
+                        <center>
+                           <!-- <img src="img/red.jpg" width="30"> -->
+                           <a href="https://www.behance.net/bejaranori34eb" target="_blank"><i class="fab fa-behance-square fa-2x"></i></a>
+                        </center>
+                     </div>
+                  </div>
+               </div>
+               <br>
+            </center>
+         </div>
+         <!--CELDA 3-->
+         <div class="col-sm panelverde2">
+            <center>
+               <br>
+               <div class="card-container">
+                  <div class="card-header"><a href="https://adolfsan99.github.io/sanchprod/" target="_blank"><img src="img/team/adolfo.png" width="200px"></a> </div>
+                  <div class="card-descripcion">
+                     <b>
+                        <center>ADOLFO SÁNCHEZ</center>
+                     </b>
+                     <p>
+                     <center>Desarrollador web</center><center>front-end</center>
+                     </p>
+                     <div class="social">
+                        <center>
+                           <!-- <img src="img/red.jpg" width="30"> -->
+                           <a href="https://www.linkedin.com/in/adolfo-sanchez-lopez-5087261ba/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a>
+                           <a href="https://www.behance.net/adolfosanchezlopez" target="_blank"><i class="fab fa-behance-square fa-2x"></i></a>
+                        </center>
+                     </div>
+                  </div>
+               </div>
+               <br>
+            </center>
+         </div>
+         <div class="nubes" style="background-color: #499a32; background-image: url('img/clouds.png'); width: 100%; height: 100%;">
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+         </div>
+         <div class="col-sm-12 panelverde2" id="contacto">
+            <br>
+            <br>
+         </div>
+         <div class="col-sm-12 panelgris">
+            <br>
+            <center>
+               <h1 class="textoblanco">CONTACTO</h1>
+            </center>
+            <br>
+         </div>
+         <div class="col-sm-12 panelgris">
+            <center>
+<div style="width: 100%"><iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=es&amp;q=4.7021212,-74.2262855+(Econnect)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.gps.ie/car-satnav-gps/">Car GPS</a></iframe></div>
+            </center>
+         </div>
+         <div class="col-sm-6 panelgris">
+            <br>
+            <br>
+            <center>
+               <img src="img/econnect-white-logo.png" alt="texto descriptivo" width="400">
+               <div class="social">
+                  <br><br><br>
+                  <a class="btn btn-dark" href="https://www.facebook.com/Econnect-107093651704595/" target="_blank"><i class="fab fa-facebook-f fa-3x"></i></a>
+                  <a class="btn btn-dark" href="https://www.instagram.com/econnectcol/" target="_blank"><i class="fab fa-instagram fa-3x"></i></a>
+                  <!--<a class="btn btn-dark" href="https://www.tiktok.com/@econnect.c?" target="_blank"><i class="fab fa-tiktok fa-3x"></i></a>-->
+               </div>
+            </center>
+            <br>
+            <br>
+         </div>
+         <div class="col-sm-6 panelgris">
+            <center>
+               <br>
+               <br>
+               <br>
+               <br>
+               <form>
+                  <div class="form-row">
+                     <div class="form-group col-md-10">
+						<input class="form-control item" type="ext" name="text" id="text" placeholder="Mensaje" required>
+                     </div>
+                     <div class="form-group col-md-10">
+						<input class="form-control item" type="ext" name="text" id="text" placeholder="Nombres y apellidos" required>
+                     </div>
+                     <div class="form-group col-md-10">
+					    <input class="form-control item" type="email" name="email" id="email" placeholder="Correo electrónico" required>
+                     </div>
+            </center>
+            <button type="submit" class="btn btn-light">ENVIAR</button>
+            </div>
+            </form>
+            <br>
+         </div>
+         <div class="col-sm-1 panelgris"></div>
+         <div class="col-sm-12 panelgris2">
+            <br>
+            <center style="color:#FFFFFF" ;>Todos los derechos reservados. © Copyright "Econnect" desde 2021 </center>
+            <br>
+         </div>
+         <a href="proyecto.html">
+         <img src="img/econnect-more-information.png" width="150px;" class="botonproyecto" alt="Más información sobre el proyecto">
+         </a>
+         <div class="col-lg-1 panel2"></div>
+      </div>
+      </div>
+      <script>
+         var acc = document.getElementsByClassName("accordion");
+         var i;
+         for (i = 0; i < acc.length; i++) {
+           acc[i].addEventListener("click", function() {
+             this.classList.toggle("active");
+             var panel = this.nextElementSibling;
+             if (panel.style.display === "block") {
+               panel.style.display = "none";
+             } else {
+               panel.style.display = "block";
+             }
+           });
+         }
+         
+      </script>
+   </body>
+</html>
